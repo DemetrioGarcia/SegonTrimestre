@@ -5,8 +5,7 @@ package org.example;
 public class Main {
     public static void main(String[] args) {
 
-        EjerciciosRecursividad prueba = new EjerciciosRecursividad();
-        int cant = EjerciciosRecursividad.Ejercicio1(900);
-        System.out.println(cant);
+       int prueba = EjerciciosRecursividad.Ejercicio2(2,3);
+        System.out.println(prueba);
     }
 }

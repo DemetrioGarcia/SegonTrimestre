@@ -1,12 +1,18 @@
 package org.example;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class EjerciciosRecursividad {
 
-    static Scanner entrada;
+    static Scanner entrada = new Scanner(System.in);
 
-    public static int Ejercicio0(){
+    public static void ejercicio0() {
+        menu();
+        seleccion();
+    }
+
+    public static void menu() {
         System.out.println("*** Batería de ejercicios sobre recursividad***");
         System.out.println("Seleccione a continuación el modo a ejecutar: ");
         System.out.println("1 - Dígitos");
@@ -16,11 +22,14 @@ public class EjerciciosRecursividad {
         System.out.println("5 - A binario");
         System.out.println("6 - Orden Alfabético");
         System.out.println("7 - Mostrar suma");
+    }
+
+    public static void seleccion() {
         int seleccion = entrada.nextInt();
         switch (seleccion) {
             case 1:
                 int n = entrada.nextInt();
-                EjerciciosRecursividad.Ejercicio1(n);
+                EjerciciosRecursividad.ejercicio1(n, 0);
                 break;
             case 2:
                 break;
@@ -38,24 +47,63 @@ public class EjerciciosRecursividad {
                 System.exit(0);
                 break;
         }
-        return seleccion;
     }
 
-    public static int Ejercicio1(int n){
+    public static void salir() {
+        System.out.println("Elige una opción: ");
+        System.out.println("    [M] - Volver al menú");
+        System.out.println("    [X] - Salir");
+        String opcion = entrada.nextLine();
+        opcion = opcion.toLowerCase();
+        opcion = String.valueOf(opcion.charAt(0));
 
-        int cantidad = 1;
-
-        if (n==0){
-            return cantidad;
+        if (opcion.equals("m")) {
+            ejercicio0();
+        } else {
+            System.exit(0);
         }
-        else {
-            while (n >= 10){
-                n = n/10;
-                cantidad++;
-            }
+    }
+
+    public static int ejercicio1(int n, int cantidad) {
+
+        if (n == 0 && cantidad == 0) {
+
+        } else if (n < 10 && cantidad == 0) {
+            cantidad++;
+        } else if (n < 10) {
+            cantidad++;
+        } else {
+            cantidad++;
+            cantidad = ejercicio1(n / 10, cantidad);
         }
         return cantidad;
     }
 
-    public static int Ejercicio2(int )
+     static int potencia;
+    public static int Ejercicio2(int num1, int num2) {
+
+        potencia = num1 * num1;
+        if (num2 != 0) {
+            potencia = Ejercicio2(num1, num2 - 1);
+        } else if (num2==0) {
+            return potencia;
+        }
+        return potencia;
+    }
+
+    public static int introducirDatos() {
+        int numero;
+        try {
+            numero = entrada.nextInt();
+        } catch (InputMismatchException e){
+            entrada.nextLine();
+            numero = -1;
+        }
+        if (numero < 0) {
+            numero = introducirDatos();
+        }
+        return numero;
+    }
+
 }
+
