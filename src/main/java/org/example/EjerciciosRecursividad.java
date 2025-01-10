@@ -10,6 +10,7 @@ public class EjerciciosRecursividad {
     public static void ejercicio0() {
         menu();
         seleccion();
+        salir();
     }
 
     public static void menu() {
@@ -28,21 +29,42 @@ public class EjerciciosRecursividad {
         int seleccion = entrada.nextInt();
         switch (seleccion) {
             case 1:
-                int n = entrada.nextInt();
-                EjerciciosRecursividad.ejercicio1(n, 0);
+                int n = introducirDatos();
+                int cifras = EjerciciosRecursividad.ejercicio1(n, 0);
+                System.out.println(cifras);
                 break;
             case 2:
+                n = introducirDatos();
+                int n1 = introducirDatos();
+                int potencia = EjerciciosRecursividad.ejercicio2(n,n1);
+                System.out.println(potencia);
                 break;
             case 3:
+                String opcion = intOstring();
+                if (opcion.equals("n")) {
+                    n = introducirDatos();
+                    EjerciciosRecursividad.ejercicio3(n);
+                }
+//                }else if(opcion.equals("l")){
+//                    EjerciciosRecursividad.ejercicio3(n);
+//                }
                 break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            case 7:
-                break;
+//            case 4:
+//                int n = entrada.nextInt();
+//                EjerciciosRecursividad.ejercicio4(n, 0);
+//                break;
+//            case 5:
+//                int n = entrada.nextInt();
+//                EjerciciosRecursividad.ejercicio5(n, 0);
+//                break;
+//            case 6:
+//                int n = entrada.nextInt();
+//                EjerciciosRecursividad.ejercicio6(n, 0);
+//                break;
+//            case 7:
+//                int n = entrada.nextInt();
+//                EjerciciosRecursividad.ejercicio7(n, 0);
+//                break;
             default:
                 System.exit(0);
                 break;
@@ -50,10 +72,11 @@ public class EjerciciosRecursividad {
     }
 
     public static void salir() {
+        String opcion;
         System.out.println("Elige una opción: ");
         System.out.println("    [M] - Volver al menú");
         System.out.println("    [X] - Salir");
-        String opcion = entrada.nextLine();
+        opcion = entrada.next();
         opcion = opcion.toLowerCase();
         opcion = String.valueOf(opcion.charAt(0));
 
@@ -68,9 +91,7 @@ public class EjerciciosRecursividad {
 
         if (n == 0 && cantidad == 0) {
 
-        } else if (n < 10 && cantidad == 0) {
-            cantidad++;
-        } else if (n < 10) {
+        }else if (n < 10) {
             cantidad++;
         } else {
             cantidad++;
@@ -79,23 +100,48 @@ public class EjerciciosRecursividad {
         return cantidad;
     }
 
-     static int potencia;
-    public static int Ejercicio2(int num1, int num2) {
+    static int potencia = 1;
+    public static int ejercicio2(int num1, int num2) {
 
-        potencia = num1 * num1;
         if (num2 != 0) {
-            potencia = Ejercicio2(num1, num2 - 1);
-        } else if (num2==0) {
+            potencia = potencia * num1;
+            ejercicio2(num1, num2 - 1);
+        } else if (num2==1){
+            potencia = potencia * num1;
             return potencia;
         }
+        else {
+            return 1;
+        }
         return potencia;
+    }
+
+    public static String intOstring(){
+        System.out.println("Quieres introducir letras (L) o numeros (N) ?");
+        String opcion = entrada.next();
+        opcion = opcion.toLowerCase();
+        opcion = String.valueOf(opcion.charAt(0));
+        return opcion;
+    }
+
+    public static void ejercicio3(int n){
+        if (n<10){
+            System.out.print(n);
+            System.out.println();
+
+        }else {
+            System.out.print(n%10);
+            ejercicio3(n/10);
+        }
     }
 
     public static int introducirDatos() {
         int numero;
         try {
+            System.out.println("Introduce un número: ");
             numero = entrada.nextInt();
         } catch (InputMismatchException e){
+            System.out.println("ERROR. Número no válido. ");
             entrada.nextLine();
             numero = -1;
         }
