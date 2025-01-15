@@ -49,10 +49,10 @@ public class EjerciciosRecursividad {
 //                    EjerciciosRecursividad.ejercicio3(n);
 //                }
                 break;
-//            case 4:
-//                int n = entrada.nextInt();
-//                EjerciciosRecursividad.ejercicio4(n, 0);
-//                break;
+            case 4:
+                n = introducirDatos();
+                EjerciciosRecursividad.ejercicio4(n);
+                break;
 //            case 5:
 //                int n = entrada.nextInt();
 //                EjerciciosRecursividad.ejercicio5(n, 0);
@@ -132,6 +132,18 @@ public class EjerciciosRecursividad {
         }else {
             System.out.print(n%10);
             ejercicio3(n/10);
+        }
+    }
+
+    public static void ejercicio4(int n){
+        if(n==1 || n==0){
+            System.out.println("El número es binario.");
+        }
+        else if (n%10==0 || n%10==1){
+            ejercicio4(n/10);
+        }
+        else {
+            System.out.println("El número no es binario.");
         }
     }
 
