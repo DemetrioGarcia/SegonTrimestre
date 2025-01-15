@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Enumeration;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -53,14 +54,14 @@ public class EjerciciosRecursividad {
                 n = introducirDatos();
                 EjerciciosRecursividad.ejercicio4(n);
                 break;
-//            case 5:
-//                int n = entrada.nextInt();
-//                EjerciciosRecursividad.ejercicio5(n, 0);
-//                break;
-//            case 6:
-//                int n = entrada.nextInt();
-//                EjerciciosRecursividad.ejercicio6(n, 0);
-//                break;
+            case 5:
+                n = introducirDatos();
+                EjerciciosRecursividad.ejercicio5(n);
+                break;
+            case 6:
+                int n = introducirCadena();
+                EjerciciosRecursividad.ejercicio6(n);
+                break;
 //            case 7:
 //                int n = entrada.nextInt();
 //                EjerciciosRecursividad.ejercicio7(n, 0);
@@ -161,6 +162,32 @@ public class EjerciciosRecursividad {
             numero = introducirDatos();
         }
         return numero;
+    }
+
+    public static String ejercicio5(int n){
+
+        if (n == 0 || n == 1){
+            return Integer.toString(n);
+        } else{
+            return ejercicio5(n/2) + n%2;
+        }
+    }
+
+    public static String introducirCadena(){
+        System.out.println("Introduce una palabra: ");
+
+        return entrada.next();
+    }
+
+    static char[] palabra;
+    static int contador = 0;
+    public static boolean ejercicio6(int contador){
+        if (contador != palabra.length()-1){
+            else{
+
+            }
+        }
+        return true;
     }
 
 }
