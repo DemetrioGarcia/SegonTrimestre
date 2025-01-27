@@ -58,10 +58,10 @@ public class EjerciciosRecursividad {
                 n = introducirDatos();
                 EjerciciosRecursividad.ejercicio5(n);
                 break;
-            case 6:
-                int n = introducirCadena();
-                EjerciciosRecursividad.ejercicio6(n);
-                break;
+//            case 6:
+//                int n = introducirCadena();
+//                EjerciciosRecursividad.ejercicio6(n);
+//                break;
 //            case 7:
 //                int n = entrada.nextInt();
 //                EjerciciosRecursividad.ejercicio7(n, 0);
@@ -179,16 +179,17 @@ public class EjerciciosRecursividad {
         return entrada.next();
     }
 
-    static char[] palabra;
-    static int contador = 0;
-    public static boolean ejercicio6(int contador){
-        if (contador != palabra.length()-1){
-            else{
-
-            }
-        }
-        return true;
-    }
+//    static char[] palabra;
+//    static int contador = 0;
+//
+//    public static boolean ejercicio6(int contador) {
+//        if (contador != palabra.length() - 1) {
+//            else{
+//
+//            }
+//        }
+//        return true;
+//    }
 
 }
 
