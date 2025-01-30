@@ -1,6 +1,8 @@
 package org.example;
 
-import java.util.Scanner;
+import org.example.biblioteca.Editorial;
+import org.example.biblioteca.Estudiante;
+import org.example.biblioteca.Libro;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -11,6 +13,8 @@ public class Main {
         Editorial editorial2 = new Editorial("Editorial2", "England");
         Libro libro1 = new Libro("LoTr", "JRT", editorial1);
         Libro libro2 = new Libro("HP", "JKR", editorial2);
+        Libro libro3 = new Libro("El hobbit", "JRT", editorial1);
+        Libro libro4 = new Libro("Mortadelo", "JRT", editorial1);
         Estudiante estudiante1 = new Estudiante("Daniel");
         Estudiante estudiante2 = new Estudiante("Manolito");
         System.out.println(libro1);
