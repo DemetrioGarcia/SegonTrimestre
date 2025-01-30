@@ -78,5 +78,10 @@ package org.example;
         public void setProfesion(String profesion){
             this.profesion=profesion;
         }
+
+        @Override
+        public String toString(){
+            return "Nombre: "+nombre+" Apellido: "+apellido+" edad: "+edad+" peso: "+peso+"kg con DNI: "+dni;
+        }
     }
 

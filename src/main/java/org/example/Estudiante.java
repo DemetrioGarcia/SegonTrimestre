@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.ArrayList;
+
 public class Estudiante {
 
     public static int contadorEstudiantes = 0;
@@ -8,12 +10,13 @@ public class Estudiante {
     private String curso;
     private int nia;
     private String email;
-    private Libro libroPrestado;
+    private ArrayList<Libro> librosPrestados;
 
     public Estudiante(String nombre) {
         this.nombre = nombre;
         contadorEstudiantes++;
         this.nia = contadorEstudiantes;
+        librosPrestados = new ArrayList<>();
     }
 
     public Estudiante(String nombre, String curso, String email) {
@@ -23,6 +26,7 @@ public class Estudiante {
         this.email = email;
         contadorEstudiantes++;
         this.nia = contadorEstudiantes;
+        librosPrestados = new ArrayList<>();
     }
 
     public String getNombre() {
@@ -41,8 +45,8 @@ public class Estudiante {
         return this.nia;
     }
 
-    public Libro getLibroPrestado() {
-        return libroPrestado;
+    public ArrayList<Libro> getLibrosPrestados() {
+        return librosPrestados;
     }
 
     public void setNombre(String nombre) {
@@ -57,13 +61,26 @@ public class Estudiante {
         this.email = email;
     }
 
-    public void setLibroPrestado(Libro libroPrestado) {
-        this.libroPrestado = libroPrestado;
+    public void setLibrosPrestados(ArrayList<Libro> librosPrestados) {
+        this.librosPrestados = librosPrestados;
+    }
+
+    public void anyadirLibro(Libro libro){
+        librosPrestados.add(libro);
+    }
+
+    public void devolverLibro(Libro libro){
+        librosPrestados.remove(libro);
     }
 
     @Override
     public String toString() {
-        return "Alumno: [nombre=  " + this.nombre + " curso: " + this.curso + " nia: " + this.nia + " email: " + this.email + "]";
+//        if (!librosPrestados.isEmpty()) {
+            return "Alumno: [nombre=  " + this.nombre + " curso: " + this.curso + " nia: " + this.nia + " email: " + this.email + "Libros: "+ librosPrestados + "]";
+//        }
+//        else {
+//            return "Alumno: [nombre=  " + this.nombre + " curso: " + this.curso + " nia: " + this.nia + " email: " + this.email + "]";
+//        }
     }
 
     public static int obtenerTotalEstudiantes() {

@@ -10,8 +10,9 @@ public class Libro {
     private String id;
     private boolean disponible;
     private Estudiante estudiantePrestado;
+    private Editorial editorial;
 
-    public Libro(String titulo, String autor) {
+    public Libro(String titulo, String autor, Editorial editorial) {
         cantidadLibros++;
         librosDisponibles++;
         this.titulo = titulo;
@@ -19,6 +20,8 @@ public class Libro {
         this.id = generarId();
         this.disponible = true;
         estudiantePrestado = null;
+        this.editorial= editorial;
+        editorial.anyadirLibro(this);
     }
 
     public String getAutor() {
@@ -64,28 +67,34 @@ public class Libro {
         }
     }
 
-    public void prestar(Estudiante estudiante) {
+    public Prestamo prestar(Estudiante estudiante) {
 
-        if (disponible && estudiante.getLibroPrestado() == null ) {
+        if (disponible && !estudiante.getLibrosPrestados().contains(this)) {
             disponible = false;
             System.out.println("El libro ha sido prestado con éxito a "+estudiante.getNombre());
             librosDisponibles--;
             estudiantePrestado = estudiante;
-            estudiante.setLibroPrestado(this);
+            estudiante.anyadirLibro(this);
             System.out.println("Libros disponibles después del préstamo: "+librosDisponibles);
-        } else if (estudiante.getLibroPrestado() != null ) {
-            System.out.println("El estudiante "+ estudiante.getNombre()+ " ya tiene un libro prestado.");
+            Prestamo prestamo = new Prestamo( estudiante, this);
+            System.out.println(prestamo);
+            return prestamo;
+        } else if (estudiante.getLibrosPrestados().contains(this) ) {
+            System.out.println("El estudiante "+ estudiante.getNombre()+ " ya tiene el libro prestado.");
         } else {
             System.out.println("El libro "+getTitulo()+ " ya ha sido prestado.");
         }
+        return null;
     }
 
-    public void devolver() {
+    public void devolver(Estudiante estudiante) {
         if (!disponible) {
             disponible = true;
             System.out.println("El libro ha sido devuelto con éxito por "+estudiantePrestado.getNombre());
             librosDisponibles++;
             System.out.println("Libros disponibles después de la devolución: "+librosDisponibles);
+            estudiantePrestado = null;
+            estudiante.devolverLibro(this);
         } else {
             System.out.println("El libro NO estaba prestado");
         }
