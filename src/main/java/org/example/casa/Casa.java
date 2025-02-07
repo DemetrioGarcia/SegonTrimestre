@@ -1,9 +1,7 @@
 package org.example.casa;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.SortedMap;
 
 public class Casa {
     Scanner entrada = new Scanner(System.in);

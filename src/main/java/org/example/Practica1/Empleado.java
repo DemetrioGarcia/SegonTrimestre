@@ -1,11 +1,11 @@
 package org.example.Practica1;
 
-import java.util.Objects;
+import lombok.ToString;
 
 public class Empleado {
 
     private static int numeroEmpleado = 0;
-    private String CARGO = "pte";
+    private String CARGODEFAULT = "pte";
 
     private String id;
     private String nombre;
@@ -15,11 +15,7 @@ public class Empleado {
     public Empleado(String nombre, String cargo, Empleado director) {
         this.id = generarID();
         this.nombre = nombre;
-        if (ValidarCargo(cargo)) {
-            this.cargo = cargo;
-        } else {
-            this.cargo = CARGO;
-        }
+       setCargo(cargo);
         this.director = director;
     }
 
@@ -44,7 +40,11 @@ public class Empleado {
     }
 
     public void setCargo(String cargo) {
-        this.cargo = cargo;
+        if (ValidarCargo(cargo)) {
+            this.cargo = cargo;
+        } else {
+            this.cargo = CARGODEFAULT;
+        }
     }
 
     public Empleado getDirector() {
@@ -57,9 +57,9 @@ public class Empleado {
 
     private String generarID() {
         numeroEmpleado++;
-        if (numeroEmpleado-- < 10) {
+        if (numeroEmpleado < 10) {
             return "EP00" + numeroEmpleado;
-        } else if (numeroEmpleado-- < 100) {
+        } else if (numeroEmpleado < 100) {
             return "EP0" + numeroEmpleado;
         } else {
             return "EP" + numeroEmpleado;
@@ -68,6 +68,10 @@ public class Empleado {
 
     private boolean ValidarCargo(String cargo) {
         return cargo.equals("director") || cargo.equals("técnico") || cargo.equals("presentador") || cargo.equals("colaborador");
+    }
+
+    public String toString() {
+        return "Empleado( id=" + this.getId() + ", nombre=" + this.getNombre() + ", cargo=" + this.getCargo() + ", director=" + String.valueOf(this.getDirector()) + ")";
     }
 
 }

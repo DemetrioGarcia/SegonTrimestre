@@ -1,8 +1,14 @@
 package org.example.Practica1;
 
-import java.time.LocalDate;
+import lombok.ToString;
 
+import java.time.LocalDate;
+import java.util.Scanner;
+
+@ToString
 public class Invitado {
+
+    Scanner entrada = new Scanner(System.in);
 
     private static LocalDate fecha = LocalDate.of(2025,3,15);
     private String nombre;
@@ -13,7 +19,7 @@ public class Invitado {
     public Invitado(String nombre, String profesion, int temporada) {
         this.nombre = nombre;
         this.profesion = profesion;
-        this.fecha_visita = setFecha_visita();
+        //this.fecha_visita = setFecha_visita();
         this.temporada = temporada;
     }
 
@@ -39,8 +45,8 @@ public class Invitado {
 
     public void setFecha_visita(LocalDate fecha){
         System.out.println("Introduce la fecha: ");
-        entrada =
-        this.fecha_visita =
+        //this.fecha_visita = entrada.nextLine();
+
     }
 
     public int getTemporada() {

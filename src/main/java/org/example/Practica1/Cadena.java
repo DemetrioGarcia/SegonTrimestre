@@ -1,7 +1,10 @@
 package org.example.Practica1;
 
+import lombok.ToString;
+
 import java.util.ArrayList;
 
+@ToString
 public class Cadena {
 
     private String nombre;

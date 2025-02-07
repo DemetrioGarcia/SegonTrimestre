@@ -1,7 +1,10 @@
 package org.example.Practica1;
 
+import lombok.ToString;
+
 import java.util.ArrayList;
 
+@ToString
 public class Programa {
 
     private String nombre;
@@ -11,18 +14,18 @@ public class Programa {
     private ArrayList<Invitado> listaInvitados;
     private Empleado director;
 
-    public Programa(String nombre, Cadena cadena, Empleado director){
-        this(nombre, cadena, 0,director );
+    public Programa(String nombre, Cadena cadena, String director){
+        this(nombre, cadena, 0,director);
     }
 
-    public Programa(String nombre, Cadena cadena, int temporadas, Empleado director) {
+    public Programa(String nombre, Cadena cadena, int temporadas, String director) {
         this.nombre = nombre;
         this.cadena = cadena;
         this.temporadas = temporadas;
-        this.director = new Empleado(nombre, "director", null );
+        this.director = new Empleado(director, "director", null );
+        listaEmpleados = new ArrayList<>();
+        listaInvitados = new ArrayList<>();
     }
-
-
 
     public String getNombre() {
         return nombre;
@@ -70,5 +73,18 @@ public class Programa {
 
     public void setDirector(Empleado director) {
         this.director = director;
+    }
+
+
+    public void insertarEmpleado(String nombre, String cargo, Empleado director) {
+        listaEmpleados.add(new Empleado(nombre, cargo, director));
+    }
+
+    public void insertarInvitado(String nombre, String profesion, int temporada) {
+        listaInvitados.add(new Invitado(nombre, profesion, temporada));
+    }
+
+    public void imprimirDirector(){
+        System.out.println(director);
     }
 }
