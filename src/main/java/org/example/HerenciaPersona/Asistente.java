@@ -17,4 +17,8 @@ class Asistente extends Persona {
     public void Prueba(){
 
     }
+
+    public void accederEvento(){
+        System.out.println("Accediendo como Asistente: Buscando asiento");
+    }
 }

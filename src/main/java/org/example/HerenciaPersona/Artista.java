@@ -15,4 +15,7 @@ class Artista extends Persona {
         System.out.println("Género Musical: " + generoMusical);
     }
 
+    public void accederEvento(){
+        System.out.println("Accediendo como Artista: Preparando el show");
+    }
 }
