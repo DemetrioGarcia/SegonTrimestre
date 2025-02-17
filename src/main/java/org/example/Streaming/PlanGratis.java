@@ -10,4 +10,10 @@ public class PlanGratis extends Suscripcion{
     void obtenerBeneficios() {
         System.out.println("Acceso limitado con anuncios.");
     }
+
+    @Override
+    void obtenerPeriodoPrueba() {
+        System.out.println("Sin periodo de prueba");
+    }
+
 }

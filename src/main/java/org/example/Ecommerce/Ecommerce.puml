@@ -1,0 +1,60 @@
+@startuml
+
+package "org.example.Ecommerce" {
+    class Tienda {
+        -entrada: Scanner
+        +realizarPago(metodo: MetodoPago, importe: double): void
+        +finPrograma(): void
+        +iniciarPago(): void
+        +eleccionPago(eleccion: String): void
+        +introducirImporte(): double
+    }
+
+    abstract class MetodoPago {
+        {abstract} +ProcesarPago(importe: double): void
+    }
+
+    class TarjetaCredito {
+        -nro_Tarjeta: String
+        -tipo: String
+        -formato: Pattern
+        -TIPOS: String[]
+        +TarjetaCredito(nro_Tarjeta: String, tipo: String)
+        +ProcesarPago(importe: double): void
+        +validarTarjeta(tarjeta: TarjetaCredito): void
+        +getTipo(): String
+        +getNro_Tarjeta(): String
+    }
+
+    class Paypal {
+        -correo: String
+        -saldo: double
+        -SALDODEF: double
+        -formatoCorreo: Pattern
+        +Paypal(correo: String)
+        +ProcesarPago(importe: double): void
+        +validarPayPal(paypal: Paypal, importe: double): void
+        +getSaldo(): double
+        +getCorreo(): String
+    }
+
+    class Bizum {
+        -telefono: String
+        -pin: int
+        -formatotlf: Pattern
+        +Bizum(telefono: String)
+        +ProcesarPago(importe: double): void
+        +validarBizum(bizum: Bizum): void
+        +getTelefono(): String
+    }
+
+    Tienda --> MetodoPago : usa
+    Tienda --> TarjetaCredito : usa
+    Tienda --> Paypal : usa
+    Tienda --> Bizum : usa
+    TarjetaCredito --> MetodoPago : hereda
+    Paypal --> MetodoPago : hereda
+    Bizum --> MetodoPago : hereda
+}
+
+@enduml
