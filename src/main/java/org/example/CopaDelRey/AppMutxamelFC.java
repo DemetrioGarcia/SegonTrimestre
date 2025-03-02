@@ -1,6 +1,5 @@
 package org.example.CopaDelRey;
 
-import org.example.ArraysList;
 
 import java.util.ArrayList;
 
